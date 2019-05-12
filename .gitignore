@@ -7,7 +7,7 @@
 *.iml
 *.ipr
 *.iws
-
+/mobile/node_modules
 # Gradle files #
 ################
 .gradle/
