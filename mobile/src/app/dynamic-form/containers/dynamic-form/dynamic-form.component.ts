@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {FieldConfig} from '../../models/field-config.interface';
-import {ControlType} from "../../models/ControlType";
 
 @Component({
   exportAs: 'dynamicForm',
@@ -32,7 +31,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   form: FormGroup;
 
   get controls() {
-    return this.config.filter(({controlType}) => controlType !== ControlType.Button);
+    return this.config;
   }
 
   get changes() {
@@ -44,7 +43,6 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   get value() {
-    debugger
     return this.form.value;
   }
 
@@ -56,7 +54,6 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges() {
-    debugger
     if (this.form) {
       const controls = Object.keys(this.form.controls);
       const configControls = this.controls.map((item) => item.controlName);
@@ -108,7 +105,6 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setValue(name: string, value: any) {
-    debugger
     this.form.controls[name].setValue(value, {emitEvent: true});
   }
 }

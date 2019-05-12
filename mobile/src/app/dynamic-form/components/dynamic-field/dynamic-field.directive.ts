@@ -10,15 +10,13 @@ import {
 } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
-import {FormButtonComponent} from '../form-button/form-button.component';
-import {FormInputComponent} from '../form-input/form-input.component';
-import {FormSelectComponent} from '../form-select/form-select.component';
+import {FormInputComponent} from '../form_elements/input/form-input.component';
+import {FormSelectComponent} from '../form_elements/select/form-select.component';
 
 import {Field} from '../../models/field.interface';
 import {FieldConfig} from '../../models/field-config.interface';
 
 const components: {[type: string]: Type<Field>} = {
-  button: FormButtonComponent,
   Text: FormInputComponent,
   Select: FormSelectComponent
 };

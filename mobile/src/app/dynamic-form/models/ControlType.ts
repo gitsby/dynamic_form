@@ -3,5 +3,4 @@ export enum ControlType {
   Text = "Text",
   Select = "Select",
   Xref = "Xref",
-  Button = "button",
 }
