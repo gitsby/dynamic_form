@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {FieldConfig} from "../dynamic-form/models/field-config.interface";
-import {Validators} from "@angular/forms";
 import {DynamicFormComponent} from "../dynamic-form/containers/dynamic-form/dynamic-form.component";
 import {ControlType} from "../dynamic-form/models/ControlType";
 
@@ -15,12 +14,35 @@ export class HomePage implements AfterViewInit {
 
   config: FieldConfig[] = [
     {
-      type: ControlType.Text,
+      controlType: ControlType.Text,
       label: 'Full name',
-      name: 'name',
+      controlName: 'name',
       placeholder: 'Enter your name',
-      editable: false
+      editable: true
     },
+    {
+      controlType: ControlType.Select,
+      editable: true,
+      controlName: "AccountType",
+      options: [
+        {
+          id: "001",
+          value: "Basic Checking"
+        },
+        {
+          id: "002",
+          value: "Premium Checking"
+        },
+        {
+          id: "003",
+          value: "Certificate Of Deposit"
+        },
+        {
+          id: "004",
+          value: "Standard Checking"
+        }
+      ],
+    }
     // {
     //   type: 'select',
     //   label: 'Favourite Food',
@@ -45,8 +67,6 @@ export class HomePage implements AfterViewInit {
             this.form.setDisabled('submit', !previousValid), 0);
       }
     });
-    setTimeout(() => this.form.setDisabled('submit', true), 0)
-    setTimeout(() => this.form.setValue('name', 'Todd Motto'), 0)
   }
 
   submit(value: { [name: string]: any }) {

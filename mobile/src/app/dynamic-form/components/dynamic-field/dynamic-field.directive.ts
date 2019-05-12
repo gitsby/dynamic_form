@@ -1,12 +1,21 @@
-import { ComponentFactoryResolver, ComponentRef, Directive, Input, OnChanges, OnInit, Type, ViewContainerRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {
+  ComponentFactoryResolver,
+  ComponentRef,
+  Directive,
+  Input,
+  OnChanges,
+  OnInit,
+  Type,
+  ViewContainerRef
+} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
-import { FormButtonComponent } from '../form-button/form-button.component';
-import { FormInputComponent } from '../form-input/form-input.component';
-import { FormSelectComponent } from '../form-select/form-select.component';
+import {FormButtonComponent} from '../form-button/form-button.component';
+import {FormInputComponent} from '../form-input/form-input.component';
+import {FormSelectComponent} from '../form-select/form-select.component';
 
-import { Field } from '../../models/field.interface';
-import { FieldConfig } from '../../models/field-config.interface';
+import {Field} from '../../models/field.interface';
+import {FieldConfig} from '../../models/field-config.interface';
 
 const components: {[type: string]: Type<Field>} = {
   button: FormButtonComponent,
@@ -39,14 +48,14 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   }
 
   ngOnInit() {
-    if (!components[this.config.type]) {
+    if (!components[this.config.controlType]) {
       const supportedTypes = Object.keys(components).join(', ');
       throw new Error(
-        `Trying to use an unsupported type (${this.config.type}).
+          `Trying to use an unsupported type (${this.config.controlType}).
         Supported types: ${supportedTypes}`
       );
     }
-    const component = this.resolver.resolveComponentFactory<Field>(components[this.config.type]);
+    const component = this.resolver.resolveComponentFactory<Field>(components[this.config.controlType]);
     this.component = this.container.createComponent(component);
     this.component.instance.config = this.config;
     this.component.instance.group = this.group;

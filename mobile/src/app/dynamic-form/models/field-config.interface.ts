@@ -5,10 +5,10 @@ import {Option} from "./Option";
 export interface FieldConfig {
   editable?: boolean
   label?: string,
-  name: string,
+  controlName: string,
   options?: Option[],
   placeholder?: string,
-  type: ControlType,
+  controlType: ControlType,
   validation?: ValidatorFn[],
   value?: any
 }

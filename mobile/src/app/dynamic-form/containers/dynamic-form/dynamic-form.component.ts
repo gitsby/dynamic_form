@@ -32,7 +32,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   form: FormGroup;
 
   get controls() {
-    return this.config.filter(({type}) => type !== ControlType.Button);
+    return this.config.filter(({controlType}) => controlType !== ControlType.Button);
   }
 
   get changes() {
@@ -44,6 +44,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   get value() {
+    debugger
     return this.form.value;
   }
 
@@ -55,9 +56,10 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges() {
+    debugger
     if (this.form) {
       const controls = Object.keys(this.form.controls);
-      const configControls = this.controls.map((item) => item.name);
+      const configControls = this.controls.map((item) => item.controlName);
 
       controls
       .filter((control) => !configControls.includes(control))
@@ -66,7 +68,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
       configControls
       .filter((control) => !controls.includes(control))
       .forEach((name) => {
-        const config = this.config.find((control) => control.name === name);
+        const config = this.config.find((control) => control.controlName === name);
         this.form.addControl(name, this.createControl(config));
       });
 
@@ -75,13 +77,13 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
   createGroup() {
     const group = this.fb.group({});
-    this.controls.forEach(control => group.addControl(control.name, this.createControl(control)));
+    this.controls.forEach(control => group.addControl(control.controlName, this.createControl(control)));
     return group;
   }
 
   createControl(config: FieldConfig) {
     const {editable, validation, value} = config;
-    return this.fb.control({disabled: editable, value}, validation);
+    return this.fb.control({disabled: !editable, value}, validation);
   }
 
   handleSubmit(event: Event) {
@@ -98,7 +100,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
     }
 
     this.config = this.config.map((item) => {
-      if (item.name === name) {
+      if (item.controlName === name) {
         item.editable = disable;
       }
       return item;
@@ -106,6 +108,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setValue(name: string, value: any) {
+    debugger
     this.form.controls[name].setValue(value, {emitEvent: true});
   }
 }
