@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FormController {
 
-
   @GetMapping(value = "/form", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public Object getFormConfig(HttpServletRequest request) {
     Enumeration<String> enParameters = request.getParameterNames();
