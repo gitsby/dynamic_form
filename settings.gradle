@@ -1,0 +1,3 @@
+rootProject.name = 'dynamic-form'
+
+include "mobile"
