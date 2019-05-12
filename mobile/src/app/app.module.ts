@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpService} from "./http.service";
 import {HttpClientModule} from "@angular/common/http";
+import {DynamicFormModule} from "./dynamic-form/dynamic-form.module";
 
 @NgModule({
   declarations: [AppComponent],

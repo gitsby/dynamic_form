@@ -4,6 +4,8 @@ import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {HttpService} from "./http.service";
+import {Validators} from "@angular/forms";
+import {FieldConfig} from "./dynamic-form/models/field-config.interface";
 
 @Component({
   selector: 'app-root',
@@ -31,4 +33,5 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
 }
