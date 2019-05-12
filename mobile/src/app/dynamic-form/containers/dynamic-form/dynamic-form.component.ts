@@ -80,8 +80,8 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   createControl(config: FieldConfig) {
-    const {disabled, validation, value} = config;
-    return this.fb.control({disabled, value}, validation);
+    const {editable, validation, value} = config;
+    return this.fb.control({disabled: editable, value}, validation);
   }
 
   handleSubmit(event: Event) {
@@ -99,7 +99,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
     this.config = this.config.map((item) => {
       if (item.name === name) {
-        item.disabled = disable;
+        item.editable = disable;
       }
       return item;
     });
