@@ -11,8 +11,9 @@ import {FieldConfig} from '../../../models/field-config.interface';
     <div [formGroup]="group">
       <label>{{ config.label }}</label>
       <br>
-      <input [readOnly]="!config.editable"
-             type="text"
+      <input type="text"
+             [ngStyle]="config.cssStyles"
+             [readOnly]="!config.editable"
              [attr.placeholder]="config.placeholder"
              [formControlName]="config.controlName">
     </div>

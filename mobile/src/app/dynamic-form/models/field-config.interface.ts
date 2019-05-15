@@ -12,4 +12,5 @@ export interface FieldConfig {
   validation?: ValidatorFn[],
   value?: any
   requestParam?: Map<string, string>;
+  cssStyles?: Map<string, string>;
 }

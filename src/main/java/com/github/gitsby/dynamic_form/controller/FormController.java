@@ -1,11 +1,21 @@
 package com.github.gitsby.dynamic_form.controller;
 
+import com.github.gitsby.dynamic_form.model.ControlType;
+import com.github.gitsby.dynamic_form.model.FormElement;
+import com.github.gitsby.dynamic_form.model.Option;
+import com.github.gitsby.dynamic_form.model.form_element.FormRadio;
+import com.github.gitsby.dynamic_form.model.form_element.FormSelect;
+import com.github.gitsby.dynamic_form.model.form_element.FormText;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -73,7 +83,6 @@ public class FormController {
       hmData.put("options", hmOptions);
       vData.addElement(hmData);
 
-
       hmData = new HashMap<String, Object>();
       hmData.put("controlName", "ResidencyType");
       hmData.put("label", "Residency Type");
@@ -87,7 +96,6 @@ public class FormController {
       hmData.put("options", hmOptions);
       vData.addElement(hmData);
 
-      
       hmData = new HashMap<String, Object>();
       hmData.put("controlName", "Submit");
       hmData.put("label", "Submit");
@@ -177,7 +185,7 @@ public class FormController {
     }
 
     return vReturn;
-    
+
 //    Enumeration<String> enParameters = request.getParameterNames();
 //    HashMap<String, Object> hmParameters = new HashMap<>();
 //    String parameterName = "";
@@ -326,6 +334,45 @@ public class FormController {
 //    }
 //
 //    return vReturn;
+  }
+
+
+  @GetMapping("/form2")
+  public ResponseEntity<Object> formVersion2(@RequestParam("RequestID") String RequestId) {
+    List<FormElement> formElements = new ArrayList<>();
+
+    FormText text = new FormText();
+
+    text.controlType = ControlType.Text;
+    text.controlName = "AccountID";
+    text.editable = true;
+    text.cssStyles.put("width", "50");
+    formElements.add(text);
+
+    FormSelect select = new FormSelect();
+    select.controlType = ControlType.Select;
+    select.controlName = "AccountType";
+    select.label = "Account Type";
+    select.editable = true;
+    select.options.add(Option.of("001", "Basic Checking"));
+    select.options.add(Option.of("002", "Premium Checking"));
+    select.options.add(Option.of("003", "Standard Checking"));
+    select.options.add(Option.of("004", "Certificate Of Deposit"));
+    select.cssStyles.put("width", "100");
+    formElements.add(select);
+
+    FormRadio radio = new FormRadio();
+    radio.controlType = ControlType.Radio;
+    radio.controlName = "ResidencyType";
+    radio.label = "Residency Type";
+    radio.editable = false;
+    radio.options.add(Option.of("001", "Full Time"));
+    radio.options.add(Option.of("002", "Partial Year"));
+    radio.options.add(Option.of("003", "Non Resident"));
+    radio.cssStyles.put("width", "100");
+    formElements.add(radio);
+
+    return ResponseEntity.ok(formElements);
   }
 
 }

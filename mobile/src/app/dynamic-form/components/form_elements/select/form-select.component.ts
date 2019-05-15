@@ -8,11 +8,11 @@ import {FieldConfig} from '../../../models/field-config.interface';
   selector: 'form-select',
   styleUrls: ['form-select.component.scss'],
   template: `
-    <div
-        class="dynamic-field form-select"
-        [formGroup]="group">
+    <div 
+         class="dynamic-field form-select"
+         [formGroup]="group">
       <label>{{ config.label }}</label>
-      <select [formControlName]="config.controlName">
+      <select [ngStyle]="config.cssStyles" [formControlName]="config.controlName">
         <option value="">{{ config.placeholder }}</option>
         <option *ngFor="let option of config.options" value="{{option.id}}">
           {{ option.value }}

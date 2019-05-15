@@ -16,25 +16,26 @@ export class HomePage implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    let reqParams = new Map<string, string>();
 
-    reqParams.set("RequestParm1", "PersonalInformation2PersonalInformation1");
-    reqParams.set("RequestParm2", "PersonalInformation2PersonalInformation2");
+    let cssStylesText = new Map();
+    cssStylesText.set("width", "50px");
+    cssStylesText.set("color", "red");
+
+
+    let cssStylesSelect = new Map();
+    cssStylesSelect.set("width", "100px");
     this.config = [
       {
-        controlType: ControlType.Radio,
+        cssStyles: cssStylesText,
         editable: true,
-        controlName: "ResidencyType",
-        label: "Residency Type",
-        options: [
-          {id: "001", value: "Full Time"},
-          {id: "002", value: "Partial Year"},
-          {id: "003", value: "Non Resident"},
-        ],
+        controlType: ControlType.Text,
+        controlName: "AccountID",
+        label: null
       },
       {
-        controlType: ControlType.Select,
+        cssStyles: cssStylesSelect,
         editable: true,
+        controlType: ControlType.Select,
         controlName: "AccountType",
         label: "Account Type",
         options: [
@@ -42,16 +43,56 @@ export class HomePage implements OnInit, AfterViewInit {
           {id: "002", value: "Premium Checking"},
           {id: "003", value: "Standard Checking"},
           {id: "004", value: "Certificate Of Deposit"}
-        ],
+        ]
       },
       {
-        controlType: ControlType.Text,
-        label: 'Full name',
-        controlName: 'name',
-        placeholder: 'Enter your name',
-        editable: true
-      },
+        editable: false,
+        controlType: ControlType.Radio,
+        controlName: "ResidencyType",
+        label: "Residency Type",
+        options: [
+          {id: "001", value: "Full Time"},
+          {id: "001", value: "Partial Year"},
+          {id: "001", value: "Non Resident"},
+        ]
+      }
     ];
+    // let reqParams = new Map<string, string>();
+    //
+    //    reqParams.set("RequestParm1", "PersonalInformation2PersonalInformation1");
+    //    reqParams.set("RequestParm2", "PersonalInformation2PersonalInformation2");
+    //    this.config = [
+    //      {
+    //        controlType: ControlType.Radio,
+    //        editable: true,
+    //        controlName: "ResidencyType",
+    //        label: "Residency Type",
+    //        options: [
+    //          {id: "001", value: "Full Time"},
+    //          {id: "002", value: "Partial Year"},
+    //          {id: "003", value: "Non Resident"},
+    //        ],
+    //      },
+    //      {
+    //        controlType: ControlType.Select,
+    //        editable: true,
+    //        controlName: "AccountType",
+    //        label: "Account Type",
+    //        options: [
+    //          {id: "001", value: "Basic Checking"},
+    //          {id: "002", value: "Premium Checking"},
+    //          {id: "003", value: "Standard Checking"},
+    //          {id: "004", value: "Certificate Of Deposit"}
+    //        ],
+    //      },
+    //      {
+    //        controlType: ControlType.Text,
+    //        label: 'Full name',
+    //        controlName: 'name',
+    //        placeholder: 'Enter your name',
+    //        editable: true
+    //      },
+    //    ];
 
 
     // {
