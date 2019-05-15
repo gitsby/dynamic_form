@@ -11,4 +11,5 @@ export interface FieldConfig {
   controlType: ControlType,
   validation?: ValidatorFn[],
   value?: any
+  requestParam?: Map<string, string>;
 }

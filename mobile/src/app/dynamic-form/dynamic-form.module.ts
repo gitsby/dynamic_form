@@ -7,6 +7,7 @@ import {DynamicFormComponent} from './containers/dynamic-form/dynamic-form.compo
 import {FormInputComponent} from './components/form_elements/input/form-input.component';
 import {FormSelectComponent} from './components/form_elements/select/form-select.component';
 import {FormXrefComponent} from "./components/form_elements/xref/form-xref.component";
+import {FormCheckboxComponent} from "./components/form_elements/checkbox/form-checkbox.component";
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {FormXrefComponent} from "./components/form_elements/xref/form-xref.compo
     DynamicFormComponent,
     FormInputComponent,
     FormSelectComponent,
-    FormXrefComponent
+    FormXrefComponent,
+    FormCheckboxComponent
   ],
   exports: [
     DynamicFormComponent
@@ -26,7 +28,8 @@ import {FormXrefComponent} from "./components/form_elements/xref/form-xref.compo
   entryComponents: [
     FormInputComponent,
     FormSelectComponent,
-    FormXrefComponent
+    FormXrefComponent,
+    FormCheckboxComponent
   ]
 })
 export class DynamicFormModule {

@@ -15,10 +15,12 @@ import {FormSelectComponent} from '../form_elements/select/form-select.component
 
 import {Field} from '../../models/field.interface';
 import {FieldConfig} from '../../models/field-config.interface';
+import {FormCheckboxComponent} from "../form_elements/checkbox/form-checkbox.component";
 
 const components: {[type: string]: Type<Field>} = {
   Text: FormInputComponent,
-  Select: FormSelectComponent
+  Select: FormSelectComponent,
+  Radio: FormCheckboxComponent
 };
 
 @Directive({
