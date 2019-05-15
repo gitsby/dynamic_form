@@ -24,6 +24,17 @@ export class HomePage implements OnInit, AfterViewInit {
       {
         controlType: ControlType.Radio,
         editable: true,
+        controlName: "ResidencyType",
+        label: "Residency Type",
+        options: [
+          {id: "001", value: "Full Time"},
+          {id: "002", value: "Partial Year"},
+          {id: "003", value: "Non Resident"},
+        ],
+      },
+      {
+        controlType: ControlType.Select,
+        editable: true,
         controlName: "AccountType",
         label: "Account Type",
         options: [
@@ -40,30 +51,6 @@ export class HomePage implements OnInit, AfterViewInit {
         placeholder: 'Enter your name',
         editable: true
       },
-      {
-        controlType: ControlType.Select,
-        editable: true,
-        controlName: "AccountType",
-        options: [
-          {
-            id: "001",
-            value: "Basic Checking"
-          },
-          {
-            id: "002",
-            value: "Premium Checking"
-          },
-          {
-            id: "003",
-            value: "Certificate Of Deposit"
-          },
-          {
-            id: "004",
-            value: "Standard Checking"
-          }
-        ],
-      },
-    
     ];
 
 
