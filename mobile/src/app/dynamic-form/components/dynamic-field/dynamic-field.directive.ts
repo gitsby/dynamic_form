@@ -16,11 +16,13 @@ import {FormSelectComponent} from '../form_elements/select/form-select.component
 import {Field} from '../../models/field.interface';
 import {FieldConfig} from '../../models/field-config.interface';
 import {FormRadioComponent} from '../form_elements/radio/form-radio.component';
+import {FormCheckboxComponent} from '../form_elements/checkbox/form-checkbox.component';
 
-const components: {[type: string]: Type<Field>} = {
+const components: { [type: string]: Type<Field> } = {
   Text: FormInputComponent,
   Select: FormSelectComponent,
-  Radio: FormRadioComponent
+  Radio: FormRadioComponent,
+  Checkbox: FormCheckboxComponent
 };
 
 @Directive({
@@ -36,9 +38,10 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   component: ComponentRef<Field>;
 
   constructor(
-    private resolver: ComponentFactoryResolver,
-    private container: ViewContainerRef
-  ) {}
+      private resolver: ComponentFactoryResolver,
+      private container: ViewContainerRef
+  ) {
+  }
 
   ngOnChanges() {
     if (this.component) {

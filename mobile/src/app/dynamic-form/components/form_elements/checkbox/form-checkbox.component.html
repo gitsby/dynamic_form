@@ -1,0 +1,9 @@
+<div [formGroup]="group">
+  <label>{{ config.label }}</label>
+  <p *ngFor="let radio of config.options">
+    <input [readOnly]="!config.editable"
+           type="checkbox"
+           [value]="radio.id"
+           [formControlName]="config.controlName">{{radio.value}}
+  </p>
+</div>
