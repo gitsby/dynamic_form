@@ -1,4 +1,18 @@
 <div class="app">
+  <div>
+    <label for="sel" *ngIf="!selectedParam">Please select request param </label>
+    <br>
+    <select id="sel" [(ngModel)]="selectedParam" (ngModelChange)="selectParam($event)">
+      <option selected value=""></option>
+      <option value="AccountData_AccountInformation">AccountData_AccountInformation</option>
+      <option value="AccountData_PersonalInformation">AccountData_PersonalInformation</option>
+    </select>
+
+  </div>
+
+  <br>
+  <br>
+
   <dynamic-form
       [config]="config"
       #form="dynamicForm"
@@ -6,3 +20,6 @@
   </dynamic-form>
   {{ form.value | json }}
 </div>
+
+
+{{test()}}

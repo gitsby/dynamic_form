@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
-import {Observable} from "rxjs/internal/Observable";
-import {environment} from "../environments/environment";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/internal/Observable';
+import {environment} from '../environments/environment';
 
 class OptionsBuilder {
   private appendingHeaders: { [key: string]: string }[] = [];
@@ -117,7 +117,7 @@ export class HttpService {
   public setControllerPrefix(controllerPrefix: string): HttpService {
     let prefixHandler = {
       get: function (target: any, name, receiver) {
-        if (name === "url") {
+        if (name === 'url') {
           return (urlSuffix) => {
             return target.__proto__.prefix() + controllerPrefix + urlSuffix;
           };
@@ -217,7 +217,7 @@ export class HttpService {
     const filename: string = decodeURIComponent(response.headers.get('Content-Disposition')
     .split(';')[1]
     .split('=')[1]
-    .replace(/["]/g, ''));
+    .replace(/[']/g, ''));
 
 
     var link = document.createElement('a');
@@ -230,17 +230,17 @@ export class HttpService {
   }
 
   get token(): string | null {
-    return localStorage.getItem("token") || null;
+    return localStorage.getItem('token') || null;
   }
 
   set token(value: string | null) {
-    localStorage.setItem("token", value || '');
+    localStorage.setItem('token', value || '');
   }
 
   private newOptionsBuilder(): OptionsBuilder {
     let ob = new OptionsBuilder();
-    if (localStorage.getItem("token")) {
-      ob.appendHeader("token", this.token);
+    if (localStorage.getItem('token')) {
+      ob.appendHeader('token', this.token);
     }
     return ob;
   }
